@@ -15,49 +15,49 @@ To write a python program to perform stop and wait protocol
 
 CLIENT:
 
-import socket
+   import socket
 
-s=socket.socket()
+   s=socket.socket()
 
-s.bind(('localhost',8000))
+   s.bind(('localhost',8000))
 
-s.listen(5)
+   s.listen(5)
 
-c,addr=s.accept()
+   c,addr=s.accept()
 
-while True:
+   while True:
 
-i=input("Enter a data: ")
+       i=input("Enter a data: ")
 
-c.send(i.encode())
+       c.send(i.encode())
 
-ack=c.recv(1024).decode()
+       ack=c.recv(1024).decode()
 
-if ack:
+       if ack:
 
-   print(ack)
+         print(ack)
    
-   continue
+         continue
    
-else:
+      else:
 
-   c.close()
+        c.close()
    
-   break
+        break
 
 SERVER:
 
-import socket
+     import socket
 
-s=socket.socket()
+     s=socket.socket()
 
-s.connect(('localhost', 8000))
+     s.connect(('localhost', 8000))
 
-while True:
+     while True:
 
-       print(s.recv(1024).decode())
+          print(s.recv(1024).decode())
        
-       s.send("Acknowledgement Recived".encode())
+          s.send("Acknowledgement Recived".encode())
 
 
 ## OUTPUT
